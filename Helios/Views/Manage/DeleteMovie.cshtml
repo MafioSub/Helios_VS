@@ -1,0 +1,53 @@
+﻿@model Helios.Models.FILM
+
+@{
+    ViewBag.Title = "Usuwanie filmu";
+}
+
+<h2>DeleteMovie</h2>
+
+<h3>Czy na pewno chcesz usunąć poniższy film ?</h3>
+<fieldset>
+    <legend>FILM</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdFilmu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdFilmu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NazwaFilmuPL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NazwaFilmuPL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NazwaFilmuORG)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NazwaFilmuORG)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RodzajFilmu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RodzajFilmu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CzasTrwania)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CzasTrwania)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="usuń" /> |
+        @Html.ActionLink("wróć do listy", "Movies")
+    </p>
+}

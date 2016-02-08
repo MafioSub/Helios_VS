@@ -1,0 +1,154 @@
+﻿@model Helios.Models.RoomLoadViewModel
+@{
+    ViewBag.Title = "Rezerwuj bilet";
+}
+
+<h2>Wybierz miejsce na mapie sali, aby zarezerwować bilet</h2>
+<div id="roomDiv">
+    @foreach (var row in Model.Rows)
+    {
+        <div class="rowWrapper">
+
+            <div class="row" id="@row.RowNumber">
+                @foreach (var seat in row.Seats)
+                {
+                    if (Model.SeatStatuses[seat.IdMiejsca] == false)
+                    {
+                    <div id="@seat.IdMiejsca" class="seat">
+                        @seat.Miejsce1
+                    </div>
+                    }
+                    else
+                    {
+                    <div id="@seat.IdMiejsca" class="seat" style="background-color:red">
+                        @seat.Miejsce1
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+</div>
+<div style="height:20px"></div>
+    @using (Html.BeginForm()) 
+    {<p>
+        @Html.Hidden("SeatId")
+        @Html.Hidden("SeanceId") 
+        Bilet: @Html.DropDownList("Ticket")<br />
+        <input type="submit" value="rezerwuj" disabled="disabled" id="submitButton" /> </p>
+
+    }
+
+<h2>Informacje o sali:</h2>
+<table>
+    <tr>
+        <th style="width: 60px">
+            @Html.DisplayNameFor(model => model.RoomId)
+        </th>
+        <th style="width: 120px">
+            @Html.DisplayNameFor(model => model.RoomName)
+        </th>
+        <th style="width: 120px">
+            @Html.DisplayNameFor(model => model.AirConditioner)
+        </th>
+        <th style="width: 120px">
+            @Html.DisplayNameFor(model => model.SeatsCount)
+        </th>
+        <th style="width: 120px">
+            @Html.DisplayNameFor(model => model.RowsCount)
+        </th>
+        <th style="width: 120px">
+            @Html.DisplayNameFor(model => model.EmptySeatsCount)
+        </th>
+        <th style="width: 120px">
+            @Html.DisplayNameFor(model => model.BusySeatsCount)
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.RoomId)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.RoomName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.AirConditioner)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.SeatsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.RowsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.EmptySeatsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.BusySeatsCount)
+        </td>
+    </tr>
+</table>
+
+<h2>Informacje o seansie:</h2>
+<table>
+    <tr>
+        <th style="width: 140px">
+            @Html.DisplayNameFor(model => model.SeanceDate)
+        </th>
+        <th style="width: 150px">
+            @Html.DisplayNameFor(model => model.SeanceTime)
+        </th>
+        <th style="width: 200px">
+            @Html.DisplayNameFor(model => model.MovieTitle)
+        </th>
+        <th style="width: 60px">
+            @Html.DisplayNameFor(model => model.MovieType)
+        </th>
+        <th style="width: 120px">
+            @Html.DisplayNameFor(model => model.MovieDuration)
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.SeanceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.SeanceTime)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MovieTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MovieType)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MovieDuration)
+        </td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("wróć do listy seansów", "Index")
+</p>
+
+<script type="text/javascript">
+    var selectedID;
+    $(document).ready(function () {
+        $("SeanceId").val(@Model.SeanceId);
+        $(".seat").click(function () {
+            var url = "@Url.Action("IsSeatAvailable", "Home")";
+            var seatID = this.id;
+            $.post(url+"?seanceId="+@Model.SeanceId+"&seatId="+this.id, function (data) {
+                if (data == true) {
+                    $('#SeatId').val(seatID);
+                    $("#submitButton").removeAttr("disabled");
+                    $("#" + selectedID).css("background-color", "#7ac0da");
+                    selectedID = seatID;
+                    $("#"+seatID).css("background-color","green");
+                }
+            });
+        });
+    });
+</script>

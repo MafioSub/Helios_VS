@@ -1,0 +1,50 @@
+﻿@model Helios.Models.FILM
+
+@{
+    ViewBag.Title = "Szczegóły filmu";
+}
+
+<h2>Szczegóły filmu</h2>
+
+<fieldset>
+    <legend>FILM</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdFilmu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdFilmu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NazwaFilmuPL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NazwaFilmuPL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NazwaFilmuORG)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NazwaFilmuORG)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RodzajFilmu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RodzajFilmu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CzasTrwania)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CzasTrwania)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("edycja", "EditMovie", new {  id=Model.IdFilmu  }) |
+    @Html.ActionLink("wróć do listy", "Movies")
+</p>

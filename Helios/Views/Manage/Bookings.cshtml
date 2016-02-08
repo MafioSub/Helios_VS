@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Helios.Models.WYKUP_BILET>
+
+@{
+    ViewBag.Title = "Rezerwacje";
+}
+
+<h2>Rezerwacje.</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th style="width:30px">
+            @Html.DisplayNameFor(model => model.IdRezerwacji)
+        </th>
+        <th style="width:100px">
+            @Html.DisplayNameFor(model => model.SEANS.SeansData)
+        </th>
+        <th style="width:100px">
+            @Html.DisplayNameFor(model => model.SEANS.SeansGodzina)
+        </th>
+        <th style="width:150px">
+            @Html.DisplayNameFor(model => model.SEANS.FILM.NazwaFilmuPL)
+        </th>
+        <th style="width:60px">
+            @Html.DisplayNameFor(model => model.SEANS.FILM.RodzajFilmu)
+        </th>
+        <th style="width:100px">
+            @Html.DisplayNameFor(model => model.SEANS.SALA.NazwaSali)
+        </th>
+        <th style="width:40px">
+            @Html.DisplayNameFor(model => model.MIEJSCE.Rzad)
+        </th>
+        <th style="width:70px">
+            @Html.DisplayNameFor(model => model.MIEJSCE.Miejsce1)
+        </th>
+        <th style="width:80px">
+            Bilet
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdRezerwacji)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEANS.SeansData)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEANS.SeansGodzina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEANS.FILM.NazwaFilmuPL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEANS.FILM.RodzajFilmu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEANS.SALA.NazwaSali)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIEJSCE.Rzad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MIEJSCE.Miejsce1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILET.NazwaBiletu)
+        </td>
+        <td>
+            @Html.ActionLink("szczegóły", "BookingDetails", new {  id=item.IdRezerwacji }) |
+            @Html.ActionLink("usuń", "DeleteBooking", new {  id=item.IdRezerwacji  })
+        </td>
+    </tr>
+}
+
+</table>

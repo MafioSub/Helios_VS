@@ -1,0 +1,46 @@
+﻿@model Helios.Models.ETAT
+
+@{
+    ViewBag.Title = "Usuwanie etatu";
+}
+
+<h2>Usuń etat</h2>
+
+<h3>Czy na pewno chcesz usunąć poniższy etat ?</h3>
+<fieldset>
+    <legend>ETAT</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdEtatu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdEtatu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NazwaEtatu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NazwaEtatu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PlacaMin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PlacaMin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PlacaMax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PlacaMax)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="usuń" /> |
+        @Html.ActionLink("wróć do listy", "EmployeeTypes")
+    </p>
+}

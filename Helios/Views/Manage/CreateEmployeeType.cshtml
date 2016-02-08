@@ -1,0 +1,52 @@
+﻿@model Helios.Models.ETAT
+
+@{
+    ViewBag.Title = "Dodawanie nowego etatu";
+}
+
+<h2>Dodaj etat.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ETAT</legend>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NazwaEtatu)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NazwaEtatu)
+            @Html.ValidationMessageFor(model => model.NazwaEtatu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PlacaMin)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PlacaMin)
+            @Html.ValidationMessageFor(model => model.PlacaMin)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PlacaMax)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PlacaMax)
+            @Html.ValidationMessageFor(model => model.PlacaMax)
+        </div>
+
+        <p>
+            <input type="submit" value="dodaj" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("wróć do listy", "EmployeeTypes")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

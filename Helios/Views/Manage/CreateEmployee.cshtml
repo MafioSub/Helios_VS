@@ -1,0 +1,130 @@
+﻿@model Helios.Models.PRACOWNIK
+
+@{
+    ViewBag.Title = "Dodawanie pracownika";
+}
+
+<h2>Dodaj pracownika.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PRACOWNIK</legend>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nazwisko)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nazwisko)
+            @Html.ValidationMessageFor(model => model.Nazwisko)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Imie)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Imie)
+            @Html.ValidationMessageFor(model => model.Imie)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KodPocztowy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KodPocztowy)
+            @Html.ValidationMessageFor(model => model.KodPocztowy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Miejscowosc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Miejscowosc)
+            @Html.ValidationMessageFor(model => model.Miejscowosc)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ulica)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ulica)
+            @Html.ValidationMessageFor(model => model.Ulica)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nr)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nr)
+            @Html.ValidationMessageFor(model => model.Nr)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Telefon)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Telefon)
+            @Html.ValidationMessageFor(model => model.Telefon)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PlacaPod)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PlacaPod)
+            @Html.ValidationMessageFor(model => model.PlacaPod)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PlacaDod)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PlacaDod)
+            @Html.ValidationMessageFor(model => model.PlacaDod)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataUr)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataUr)
+            @Html.ValidationMessageFor(model => model.DataUr)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataZat)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataZat)
+            @Html.ValidationMessageFor(model => model.DataZat)
+        </div>
+
+        <div class="editor-label">
+            Etat
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("EmployeeType")
+        </div>
+
+        <div class="editor-label">
+            Kino
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Cinema")
+        </div>
+
+        <p>
+            <input type="submit" value="dodaj" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("wróć do listy pracowników", "Employees")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

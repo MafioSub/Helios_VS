@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4d9becb385d24e98acbd9c6425a09b43" Name="Diagram1">
+        <EntityTypeShape EntityType="HeliosModel.BILET" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeliosModel.ETAT" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeliosModel.FILM" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeliosModel.KINO" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeliosModel.MIEJSCE" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeliosModel.OBSLUGA" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeliosModel.PRACOWNIK" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeliosModel.SALA" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeliosModel.SEANS" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeliosModel.WYKUP_BILET" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="HeliosModel.FK_IdBiletu" ManuallyRouted="false" />
+        <AssociationConnector Association="HeliosModel.FK_IdEtatu" ManuallyRouted="false" />
+        <AssociationConnector Association="HeliosModel.FK_IdFilmu" ManuallyRouted="false" />
+        <AssociationConnector Association="HeliosModel.FK_IdFilmu_O" ManuallyRouted="false" />
+        <AssociationConnector Association="HeliosModel.FK_IdKina" ManuallyRouted="false" />
+        <AssociationConnector Association="HeliosModel.FK_IdKina_P" ManuallyRouted="false" />
+        <AssociationConnector Association="HeliosModel.FK_IdMiejsca" ManuallyRouted="false" />
+        <AssociationConnector Association="HeliosModel.FK_IdSali" ManuallyRouted="false" />
+        <AssociationConnector Association="HeliosModel.FK_IdPracownika" ManuallyRouted="false" />
+        <AssociationConnector Association="HeliosModel.FK_IdSali_S" ManuallyRouted="false" />
+        <AssociationConnector Association="HeliosModel.FK_IdSeansu" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

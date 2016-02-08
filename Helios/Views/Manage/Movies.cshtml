@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Helios.Models.FILM>
+
+@{
+    ViewBag.Title = "Filmy";
+}
+
+<h2>Lista filmów.</h2>
+
+<p>
+    @Html.ActionLink("dodaj film", "CreateMovie")
+</p>
+ @using (Html.BeginForm()){   
+         <p> rodzaj: @Html.DropDownList("movieGenre", "wszystkie")  
+             szukaj po tytule: @Html.TextBox("SearchString") <br />  
+         <input type="submit" value="filtruj" /></p>
+        }
+<table>
+    <tr>
+        <th style="width:30px">
+            @Html.DisplayNameFor(model => model.IdFilmu)
+        </th>
+        <th style="width:200px">
+            @Html.DisplayNameFor(model => model.NazwaFilmuPL)
+        </th>
+        <th style="width:200px">
+            @Html.DisplayNameFor(model => model.NazwaFilmuORG)
+        </th>
+        <th style="width:70px">
+            @Html.DisplayNameFor(model => model.RodzajFilmu)
+        </th>
+        <th style="width:70px">
+            @Html.DisplayNameFor(model => model.CzasTrwania)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdFilmu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazwaFilmuPL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazwaFilmuORG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RodzajFilmu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CzasTrwania)
+        </td>
+        <td>
+            @Html.ActionLink("edycja", "EditMovie", new {  id=item.IdFilmu }) |
+            @Html.ActionLink("szczegóły", "MovieDetails", new {  id=item.IdFilmu }) |
+            @Html.ActionLink("usuń", "DeleteMovie", new {  id=item.IdFilmu })
+        </td>
+    </tr>
+}
+
+</table>

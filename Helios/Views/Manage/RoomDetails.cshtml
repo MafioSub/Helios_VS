@@ -1,0 +1,43 @@
+﻿@model Helios.Models.SALA
+
+@{
+    ViewBag.Title = "Szczegóły sali kinowej";
+}
+
+<h2>Szczegóły sali</h2>
+
+<fieldset>
+    <legend>SALA</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdSali)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdSali)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NazwaSali)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NazwaSali)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Klimatyzacja)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Klimatyzacja)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FK_IdKina)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FK_IdKina)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edytuj", "EditRoom", new {  id=Model.IdSali  }) |
+    @Html.ActionLink("Wróć do listy sal", "Rooms")
+</p>

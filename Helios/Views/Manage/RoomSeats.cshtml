@@ -1,0 +1,86 @@
+﻿@model Helios.Models.RoomSeats
+@{
+    ViewBag.Title = "Zarządzanie miejscami w sali kinowej";
+}
+
+<h2>Miejsca w sali kinowej.</h2>
+
+<h3>Informacje o sali kinowej: </h3>
+<fieldset>
+    <legend>SALA</legend>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Room.IdSali)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Room.IdSali)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Room.NazwaSali)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Room.NazwaSali)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Room.Klimatyzacja)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Room.Klimatyzacja)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Room.FK_IdKina)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Room.FK_IdKina)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.SeatsCount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeatsCount)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.RowsCount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RowsCount)
+    </div>
+
+    <h3>Rzędy</h3>
+    <p>
+        @Html.ActionLink("dodaj rząd", "CreateSeatsRow", new { roomId = Model.Room.IdSali })
+    </p>
+
+    <table>
+        <tr>
+            <th style="width: 60px">Nr rzędu
+            </th>
+            <th style="width: 120px">Liczba miejsc
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Rows)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RowNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatsCount)
+                </td>
+                <td>
+                    @Html.ActionLink("edycja", "EditSeatsRow", new { roomId = Model.Room.IdSali, rowNr = item.RowNumber }) |
+                    @Html.ActionLink("usuń", "DeleteSeatsRow", new { roomId = Model.Room.IdSali, rowNr = item.RowNumber })
+                </td>
+            </tr>
+        }
+    </table>
+</fieldset>
+<p>
+    @Html.ActionLink("wróć do listy sal", "Rooms")
+</p>

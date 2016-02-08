@@ -1,0 +1,69 @@
+﻿@model Helios.Models.SEANS
+
+@{
+    ViewBag.Title = "Szczegóły seansu";
+}
+
+<h2>Szczegóły seansu</h2>
+
+<fieldset>
+    <legend>SEANS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdSeansu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdSeansu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SeansData)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeansData)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SeansGodzina)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeansGodzina)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status_S)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status_S)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FK_IdSali)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FK_IdSali)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SALA.NazwaSali)
+    </div>
+    <div class="display-field">
+        @Html.ActionLink(Model.SALA.NazwaSali,"RoomDetails",new {id = Model.SALA.IdSali})
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FK_IdFilmu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FK_IdFilmu)
+    </div>
+    <div class="display-label">
+         Tytuł filmu
+    </div>
+    <div class="display-field">
+        @Html.ActionLink(Model.FILM.NazwaFilmuPL, "MovieDetails", new { id = Model.FILM.IdFilmu })
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("edycja", "EditSeance", new {  id=Model.IdSeansu }) |
+    @Html.ActionLink("wróć do listy", "Seances")
+</p>

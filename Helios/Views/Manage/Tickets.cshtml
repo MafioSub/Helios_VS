@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Helios.Models.BILET>
+
+@{
+    ViewBag.Title = "Bilety";
+}
+
+<h2>Bilety</h2>
+
+<p>
+    @Html.ActionLink("dodaj bilet", "CreateTicket")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdBiletu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NazwaBiletu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cena)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdBiletu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazwaBiletu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena)
+        </td>
+        <td>
+            @Html.ActionLink("edycja", "EditTicket", new {  id=item.IdBiletu }) |
+            @Html.ActionLink("szczegóły", "TicketDetails", new {  id=item.IdBiletu }) |
+            @Html.ActionLink("usuń", "DeleteTicket", new {  id=item.IdBiletu })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,79 @@
+﻿@model Helios.Models.SEANS
+
+@{
+    ViewBag.Title = "Edycja seansu";
+}
+
+<h2>Edytuj seans.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SEANS</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdSeansu)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.IdSeansu, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.IdSeansu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SeansData)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeansData)
+            @Html.ValidationMessageFor(model => model.SeansData)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SeansGodzina)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeansGodzina)
+            @Html.ValidationMessageFor(model => model.SeansGodzina)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status_S)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Status_S)
+            @Html.ValidationMessageFor(model => model.Status_S)
+        </div>
+
+        <div class="editor-label">
+            Sala
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Room")
+        </div>
+
+        <div class="editor-label">
+            Film
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Movie")
+        </div>
+
+        <p>
+            <input type="submit" value="zapisz" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("wróć do listy", "Seances")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+     $(document).ready(function () {
+         $("#SeansData").datepicker({ minDate: new Date() });
+     });
+  </script>

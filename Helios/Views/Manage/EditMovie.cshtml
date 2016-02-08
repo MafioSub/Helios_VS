@@ -1,0 +1,67 @@
+﻿@model Helios.Models.FILM
+
+@{
+    ViewBag.Title = "Edycja filmu";
+}
+
+<h2>Edytuj film.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>FILM</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdFilmu)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.IdFilmu, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.IdFilmu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NazwaFilmuPL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NazwaFilmuPL)
+            @Html.ValidationMessageFor(model => model.NazwaFilmuPL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NazwaFilmuORG)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NazwaFilmuORG)
+            @Html.ValidationMessageFor(model => model.NazwaFilmuORG)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RodzajFilmu)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RodzajFilmu)
+            @Html.ValidationMessageFor(model => model.RodzajFilmu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CzasTrwania)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CzasTrwania)
+            @Html.ValidationMessageFor(model => model.CzasTrwania)
+        </div>
+
+        <p>
+            <input type="submit" value="zapisz" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("wróć do listy", "Movies")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

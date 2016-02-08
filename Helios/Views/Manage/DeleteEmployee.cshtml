@@ -1,0 +1,116 @@
+﻿@model Helios.Models.PRACOWNIK
+
+@{
+    ViewBag.Title = "Usuwanie pracownika";
+}
+
+<h2>Usuń pracownika.</h2>
+
+<h3>Czy na pewno chcesz usunąć poniższego pracownika?</h3>
+<fieldset>
+    <legend>PRACOWNIK</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdPracownika)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdPracownika)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nazwisko)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nazwisko)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Imie)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Imie)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.KodPocztowy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.KodPocztowy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Miejscowosc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Miejscowosc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ulica)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ulica)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nr)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nr)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Telefon)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefon)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PlacaPod)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PlacaPod)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PlacaDod)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PlacaDod)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataUr)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataUr)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataZat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataZat)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ETAT.NazwaEtatu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ETAT.NazwaEtatu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.KINO.NazwaKina)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.KINO.NazwaKina)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="usuń" /> |
+        @Html.ActionLink("wróć do listy", "Employees")
+    </p>
+}

@@ -1,0 +1,72 @@
+﻿@model Helios.Models.WYKUP_BILET
+
+@{
+    ViewBag.Title = "Szczegóły rezerwacji";
+}
+
+<h2>Szczegóły rezerwacji</h2>
+
+<fieldset>
+    <legend>WYKUP_BILET</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdRezerwacji)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdRezerwacji)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SEANS.SeansData)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SEANS.SeansData)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SEANS.SeansGodzina)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SEANS.SeansGodzina)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SEANS.FILM.NazwaFilmuPL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SEANS.FILM.NazwaFilmuPL)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SEANS.FILM.RodzajFilmu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SEANS.FILM.RodzajFilmu)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MIEJSCE.SALA.NazwaSali)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MIEJSCE.SALA.NazwaSali)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MIEJSCE.Rzad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MIEJSCE.Rzad)
+    </div>
+    <div class="display-label">
+         Miejsce
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MIEJSCE.Miejsce1)
+    </div>
+    <div class="display-label">
+         Bilet
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BILET.NazwaBiletu)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("wróć do listy rezerwacji", "Bookings")
+</p>

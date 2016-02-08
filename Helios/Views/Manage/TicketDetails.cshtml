@@ -1,0 +1,36 @@
+﻿@model Helios.Models.BILET
+
+@{
+    ViewBag.Title = "Szczegóły biletu";
+}
+
+<h2>Szczegóły biletu</h2>
+
+<fieldset>
+    <legend>BILET</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdBiletu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdBiletu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NazwaBiletu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NazwaBiletu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cena)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cena)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("edycja", "EditTicket", new {  id=Model.IdBiletu }) |
+    @Html.ActionLink("wróć do listy", "Tickets")
+</p>

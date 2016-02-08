@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Helios.Models.PRACOWNIK>
+
+@{
+    ViewBag.Title = "Pracownicy";
+}
+
+<h2>Employees</h2>
+
+<p>
+    @Html.ActionLink("dodaj pracownika", "CreateEmployee")
+</p>
+<table>
+    <tr>
+        <th style="width:30px">
+            @Html.DisplayNameFor(model => model.IdPracownika)
+        </th>
+        <th style="width:100px">
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </th>
+        <th style="width:100px">
+            @Html.DisplayNameFor(model => model.Imie)
+        </th>
+        <th style="width:120px">
+            @Html.DisplayNameFor(model => model.Miejscowosc)
+        </th>
+        <th style="width:120px">
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th style="width:80px;">
+            etat
+        </th>
+        <th style="width:200px"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdPracownika)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwisko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Miejscowosc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ETAT.NazwaEtatu)
+        </td>
+        <td>
+            @Html.ActionLink("edycja", "EditEmployee", new {  id=item.IdPracownika }) |
+            @Html.ActionLink("szczegóły", "EmployeeDetails", new {  id=item.IdPracownika }) |
+            @Html.ActionLink("usuń", "DeleteEmployee", new {  id=item.IdPracownika })
+        </td>
+    </tr>
+}
+
+</table>

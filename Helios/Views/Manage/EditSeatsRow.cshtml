@@ -1,0 +1,50 @@
+﻿@model Helios.Models.SeatsRow
+
+@{
+    ViewBag.Title = "Edycja rzędu miejsc sali kinowej";
+}
+
+<h2>Edycja miejsc sali kinowej.</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SeatsRow</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RoomId)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.RoomId, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.RoomId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RowNumber)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.RowNumber, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.RowNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SeatsCount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeatsCount)
+            @Html.ValidationMessageFor(model => model.SeatsCount)
+        </div>
+
+        <p>
+            <input type="submit" value="zapisz" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("wróć", "RoomSeats",new {id = Model.RoomId })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

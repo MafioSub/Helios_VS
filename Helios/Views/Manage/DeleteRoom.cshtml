@@ -1,0 +1,46 @@
+﻿@model Helios.Models.SALA
+
+@{
+    ViewBag.Title = "Usuwanie sali kinowej";
+}
+
+<h2>Usuń salę</h2>
+
+<h3>Czy na pewno chcesz usunąć?</h3>
+<fieldset>
+    <legend>SALA</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdSali)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdSali)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NazwaSali)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NazwaSali)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Klimatyzacja)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Klimatyzacja)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FK_IdKina)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FK_IdKina)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="usuń" /> |
+        @Html.ActionLink("wróć do listy sal", "Rooms")
+    </p>
+}

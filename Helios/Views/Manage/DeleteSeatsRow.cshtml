@@ -1,0 +1,39 @@
+﻿@model Helios.Models.SeatsRow
+
+@{
+    ViewBag.Title = "DeleteSeatsRow";
+}
+
+<h2>Usuń rząd.</h2>
+
+<h3>Czy na pewno chcesz usunąć poniższy rząd ?</h3>
+<fieldset>
+    <legend>SeatsRow</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RoomId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoomId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RowNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RowNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SeatsCount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeatsCount)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="usuń" /> |
+        @Html.ActionLink("wróć", "RoomSeats", new { id = Model.RoomId })
+    </p>
+}

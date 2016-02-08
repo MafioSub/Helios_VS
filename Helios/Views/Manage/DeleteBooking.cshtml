@@ -1,0 +1,46 @@
+﻿@model Helios.Models.WYKUP_BILET
+
+@{
+    ViewBag.Title = "Usuwanie rezerwacji";
+}
+
+<h2>Usuń rezerwację.</h2>
+
+<h3>Czy na pewno chcesz usunąć następującą rezerwację ?</h3>
+<fieldset>
+    <legend>WYKUP_BILET</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdRezerwacji)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdRezerwacji)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FK_IdSeansu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FK_IdSeansu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FK_IdMiejsca)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FK_IdMiejsca)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FK_IdBiletu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FK_IdBiletu)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="usuń" /> |
+        @Html.ActionLink("wróć do listy rezerwacji", "Bookings")
+    </p>
+}

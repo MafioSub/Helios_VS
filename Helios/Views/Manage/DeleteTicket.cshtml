@@ -1,0 +1,39 @@
+﻿@model Helios.Models.BILET
+
+@{
+    ViewBag.Title = "Usuwanie biletu";
+}
+
+<h2>DeleteTicket</h2>
+
+<h3>Czy na pewno chcesz usunąć dane biletu?</h3>
+<fieldset>
+    <legend>BILET</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdBiletu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdBiletu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NazwaBiletu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NazwaBiletu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cena)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cena)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="usuń" /> |
+        @Html.ActionLink("wróć do listy", "Tickets")
+    </p>
+}

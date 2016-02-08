@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Helios.Models.ETAT>
+
+@{
+    ViewBag.Title = "Etaty";
+}
+
+<h2>Etaty</h2>
+
+<p>
+    @Html.ActionLink("dodaj etat", "CreateEmployeeType")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdEtatu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NazwaEtatu)
+        </th>
+        <th style="width:100px">
+            @Html.DisplayNameFor(model => model.PlacaMin)
+        </th>
+        <th style="width:100px">
+            @Html.DisplayNameFor(model => model.PlacaMax)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdEtatu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazwaEtatu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlacaMin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlacaMax)
+        </td>
+        <td>
+            @Html.ActionLink("edycja", "EditEmployeeType", new {  id=item.IdEtatu }) |
+            @Html.ActionLink("szczegóły", "EmployeeTypeDetails", new {  id=item.IdEtatu }) |
+            @Html.ActionLink("usuń", "DeleteEmployeeType", new {  id=item.IdEtatu })
+        </td>
+    </tr>
+}
+
+</table>

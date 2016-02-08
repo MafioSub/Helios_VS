@@ -1,0 +1,131 @@
+﻿@model Helios.Models.RoomLoadViewModel
+@{
+    ViewBag.Title = "Obciążenie sali kinowej";
+}
+
+<h2>Obciążenie sali kinowej</h2>
+<div id="roomDiv">
+    @foreach (var row in Model.Rows)
+    {
+        <div class="rowWrapper">
+
+            <div class="row" id="@row.RowNumber">
+                @foreach (var seat in row.Seats)
+                {
+                    if (Model.SeatStatuses[seat.IdMiejsca] == false)
+                    {
+                    <div id="@seat.IdMiejsca" class="seat">
+                        @seat.Miejsce1
+                    </div>
+                    }
+                    else
+                    {
+                    <div id="@seat.IdMiejsca" class="seat" style="background-color:red">
+                        @seat.Miejsce1
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<h2>Informacje o sali:</h2>
+<table>
+    <tr>
+        <th style="width:60px">
+            @Html.DisplayNameFor(model => model.RoomId)
+        </th>
+        <th style="width:120px">
+            @Html.DisplayNameFor(model => model.RoomName)
+        </th>
+        <th style="width:120px">
+            @Html.DisplayNameFor(model => model.AirConditioner)
+        </th>
+        <th style="width:120px">
+            @Html.DisplayNameFor(model => model.SeatsCount)
+        </th>
+        <th style="width:120px">
+             @Html.DisplayNameFor(model => model.RowsCount)
+        </th>
+        <th style="width:120px">
+             @Html.DisplayNameFor(model => model.EmptySeatsCount)
+        </th>
+        <th style="width:120px">
+             @Html.DisplayNameFor(model => model.BusySeatsCount)
+        </th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.RoomId)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.RoomName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.AirConditioner)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.SeatsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.RowsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.EmptySeatsCount)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.BusySeatsCount)
+        </td>
+    </tr>
+
+
+</table>
+
+<h2>Informacje o seansie:</h2>
+<table>
+    <tr>
+        <th style="width:140px">
+            @Html.DisplayNameFor(model => model.SeanceDate)
+        </th>
+        <th style="width:150px">
+            @Html.DisplayNameFor(model => model.SeanceTime)
+        </th>
+        <th style="width:200px">
+            @Html.DisplayNameFor(model => model.MovieTitle)
+        </th>
+        <th style="width:60px">
+            @Html.DisplayNameFor(model => model.MovieType)
+        </th>
+        <th style="width:120px">
+             @Html.DisplayNameFor(model => model.MovieDuration)
+        </th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.SeanceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.SeanceTime)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MovieTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MovieType)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MovieDuration)
+        </td>
+    </tr>
+
+
+</table>
+
+<p>
+    @Html.ActionLink("wróć do listy seansów", "Seances")
+</p>

@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HeliosModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="HeliosModelStoreContainer">
+          <EntitySet Name="BILET" EntityType="HeliosModel.Store.BILET" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ETAT" EntityType="HeliosModel.Store.ETAT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FILM" EntityType="HeliosModel.Store.FILM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KINO" EntityType="HeliosModel.Store.KINO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MIEJSCE" EntityType="HeliosModel.Store.MIEJSCE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OBSLUGA" EntityType="HeliosModel.Store.OBSLUGA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PRACOWNIK" EntityType="HeliosModel.Store.PRACOWNIK" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SALA" EntityType="HeliosModel.Store.SALA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SEANS" EntityType="HeliosModel.Store.SEANS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WYKUP_BILET" EntityType="HeliosModel.Store.WYKUP_BILET" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_IdBiletu" Association="HeliosModel.Store.FK_IdBiletu">
+            <End Role="BILET" EntitySet="BILET" />
+            <End Role="WYKUP_BILET" EntitySet="WYKUP_BILET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdEtatu" Association="HeliosModel.Store.FK_IdEtatu">
+            <End Role="ETAT" EntitySet="ETAT" />
+            <End Role="PRACOWNIK" EntitySet="PRACOWNIK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdFilmu" Association="HeliosModel.Store.FK_IdFilmu">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="SEANS" EntitySet="SEANS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdFilmu_O" Association="HeliosModel.Store.FK_IdFilmu_O">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="OBSLUGA" EntitySet="OBSLUGA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdKina" Association="HeliosModel.Store.FK_IdKina">
+            <End Role="KINO" EntitySet="KINO" />
+            <End Role="SALA" EntitySet="SALA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdKina_P" Association="HeliosModel.Store.FK_IdKina_P">
+            <End Role="KINO" EntitySet="KINO" />
+            <End Role="PRACOWNIK" EntitySet="PRACOWNIK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdMiejsca" Association="HeliosModel.Store.FK_IdMiejsca">
+            <End Role="MIEJSCE" EntitySet="MIEJSCE" />
+            <End Role="WYKUP_BILET" EntitySet="WYKUP_BILET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdPracownika" Association="HeliosModel.Store.FK_IdPracownika">
+            <End Role="PRACOWNIK" EntitySet="PRACOWNIK" />
+            <End Role="OBSLUGA" EntitySet="OBSLUGA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdSali" Association="HeliosModel.Store.FK_IdSali">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="MIEJSCE" EntitySet="MIEJSCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdSali_S" Association="HeliosModel.Store.FK_IdSali_S">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="SEANS" EntitySet="SEANS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdSeansu" Association="HeliosModel.Store.FK_IdSeansu">
+            <End Role="SEANS" EntitySet="SEANS" />
+            <End Role="WYKUP_BILET" EntitySet="WYKUP_BILET" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BILET">
+          <Key>
+            <PropertyRef Name="IdBiletu" />
+          </Key>
+          <Property Name="IdBiletu" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaBiletu" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Cena" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ETAT">
+          <Key>
+            <PropertyRef Name="IdEtatu" />
+          </Key>
+          <Property Name="IdEtatu" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaEtatu" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="PlacaMin" Type="money" Nullable="false" />
+          <Property Name="PlacaMax" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILM">
+          <Key>
+            <PropertyRef Name="IdFilmu" />
+          </Key>
+          <Property Name="IdFilmu" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaFilmuPL" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="NazwaFilmuORG" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RodzajFilmu" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="CzasTrwania" Type="time" Precision="0" />
+        </EntityType>
+        <EntityType Name="KINO">
+          <Key>
+            <PropertyRef Name="IdKina" />
+          </Key>
+          <Property Name="IdKina" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaKina" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="KodPocztowy" Type="varchar" MaxLength="6" />
+          <Property Name="Miejscowosc" Type="varchar" MaxLength="30" />
+          <Property Name="Ulica" Type="varchar" MaxLength="30" />
+          <Property Name="Nr" Type="varchar" MaxLength="15" />
+          <Property Name="Telefon" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="MIEJSCE">
+          <Key>
+            <PropertyRef Name="IdMiejsca" />
+          </Key>
+          <Property Name="IdMiejsca" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Rzad" Type="int" Nullable="false" />
+          <Property Name="Miejsce" Type="int" Nullable="false" />
+          <Property Name="Status_M" Type="bit" />
+          <Property Name="FK_IdSali" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OBSLUGA">
+          <Key>
+            <PropertyRef Name="IdObslugi" />
+          </Key>
+          <Property Name="IdObslugi" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FK_IdFilmu" Type="int" Nullable="false" />
+          <Property Name="FK_IdPracownika" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRACOWNIK">
+          <Key>
+            <PropertyRef Name="IdPracownika" />
+          </Key>
+          <Property Name="IdPracownika" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwisko" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Imie" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="KodPocztowy" Type="varchar" MaxLength="6" />
+          <Property Name="Miejscowosc" Type="varchar" MaxLength="30" />
+          <Property Name="Ulica" Type="varchar" MaxLength="30" />
+          <Property Name="Nr" Type="varchar" MaxLength="15" />
+          <Property Name="Telefon" Type="varchar" MaxLength="20" />
+          <Property Name="PlacaPod" Type="money" Nullable="false" />
+          <Property Name="PlacaDod" Type="money" />
+          <Property Name="DataUr" Type="date" />
+          <Property Name="DataZat" Type="date" />
+          <Property Name="FK_IdEtatu" Type="int" Nullable="false" />
+          <Property Name="FK_IdKina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SALA">
+          <Key>
+            <PropertyRef Name="IdSali" />
+          </Key>
+          <Property Name="IdSali" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaSali" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Klimatyzacja" Type="bit" />
+          <Property Name="FK_IdKina" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEANS">
+          <Key>
+            <PropertyRef Name="IdSeansu" />
+          </Key>
+          <Property Name="IdSeansu" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SeansData" Type="date" Nullable="false" />
+          <Property Name="SeansGodzina" Type="time" Nullable="false" Precision="0" />
+          <Property Name="Status_S" Type="bit" />
+          <Property Name="FK_IdSali" Type="int" Nullable="false" />
+          <Property Name="FK_IdFilmu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WYKUP_BILET">
+          <Key>
+            <PropertyRef Name="IdRezerwacji" />
+          </Key>
+          <Property Name="IdRezerwacji" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FK_IdSeansu" Type="int" Nullable="false" />
+          <Property Name="FK_IdMiejsca" Type="int" Nullable="false" />
+          <Property Name="FK_IdBiletu" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_IdBiletu">
+          <End Role="BILET" Type="HeliosModel.Store.BILET" Multiplicity="1" />
+          <End Role="WYKUP_BILET" Type="HeliosModel.Store.WYKUP_BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BILET">
+              <PropertyRef Name="IdBiletu" />
+            </Principal>
+            <Dependent Role="WYKUP_BILET">
+              <PropertyRef Name="FK_IdBiletu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdEtatu">
+          <End Role="ETAT" Type="HeliosModel.Store.ETAT" Multiplicity="1" />
+          <End Role="PRACOWNIK" Type="HeliosModel.Store.PRACOWNIK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETAT">
+              <PropertyRef Name="IdEtatu" />
+            </Principal>
+            <Dependent Role="PRACOWNIK">
+              <PropertyRef Name="FK_IdEtatu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdFilmu">
+          <End Role="FILM" Type="HeliosModel.Store.FILM" Multiplicity="1" />
+          <End Role="SEANS" Type="HeliosModel.Store.SEANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="IdFilmu" />
+            </Principal>
+            <Dependent Role="SEANS">
+              <PropertyRef Name="FK_IdFilmu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdFilmu_O">
+          <End Role="FILM" Type="HeliosModel.Store.FILM" Multiplicity="1" />
+          <End Role="OBSLUGA" Type="HeliosModel.Store.OBSLUGA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="IdFilmu" />
+            </Principal>
+            <Dependent Role="OBSLUGA">
+              <PropertyRef Name="FK_IdFilmu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdKina">
+          <End Role="KINO" Type="HeliosModel.Store.KINO" Multiplicity="1" />
+          <End Role="SALA" Type="HeliosModel.Store.SALA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KINO">
+              <PropertyRef Name="IdKina" />
+            </Principal>
+            <Dependent Role="SALA">
+              <PropertyRef Name="FK_IdKina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdKina_P">
+          <End Role="KINO" Type="HeliosModel.Store.KINO" Multiplicity="1" />
+          <End Role="PRACOWNIK" Type="HeliosModel.Store.PRACOWNIK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KINO">
+              <PropertyRef Name="IdKina" />
+            </Principal>
+            <Dependent Role="PRACOWNIK">
+              <PropertyRef Name="FK_IdKina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdMiejsca">
+          <End Role="MIEJSCE" Type="HeliosModel.Store.MIEJSCE" Multiplicity="1" />
+          <End Role="WYKUP_BILET" Type="HeliosModel.Store.WYKUP_BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MIEJSCE">
+              <PropertyRef Name="IdMiejsca" />
+            </Principal>
+            <Dependent Role="WYKUP_BILET">
+              <PropertyRef Name="FK_IdMiejsca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdPracownika">
+          <End Role="PRACOWNIK" Type="HeliosModel.Store.PRACOWNIK" Multiplicity="1" />
+          <End Role="OBSLUGA" Type="HeliosModel.Store.OBSLUGA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRACOWNIK">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="OBSLUGA">
+              <PropertyRef Name="FK_IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdSali">
+          <End Role="SALA" Type="HeliosModel.Store.SALA" Multiplicity="1" />
+          <End Role="MIEJSCE" Type="HeliosModel.Store.MIEJSCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="IdSali" />
+            </Principal>
+            <Dependent Role="MIEJSCE">
+              <PropertyRef Name="FK_IdSali" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdSali_S">
+          <End Role="SALA" Type="HeliosModel.Store.SALA" Multiplicity="1" />
+          <End Role="SEANS" Type="HeliosModel.Store.SEANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="IdSali" />
+            </Principal>
+            <Dependent Role="SEANS">
+              <PropertyRef Name="FK_IdSali" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdSeansu">
+          <End Role="SEANS" Type="HeliosModel.Store.SEANS" Multiplicity="1" />
+          <End Role="WYKUP_BILET" Type="HeliosModel.Store.WYKUP_BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEANS">
+              <PropertyRef Name="IdSeansu" />
+            </Principal>
+            <Dependent Role="WYKUP_BILET">
+              <PropertyRef Name="FK_IdSeansu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HeliosModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HeliosEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="BILET" EntityType="HeliosModel.BILET" />
+          <EntitySet Name="ETAT" EntityType="HeliosModel.ETAT" />
+          <EntitySet Name="FILM" EntityType="HeliosModel.FILM" />
+          <EntitySet Name="KINO" EntityType="HeliosModel.KINO" />
+          <EntitySet Name="MIEJSCE" EntityType="HeliosModel.MIEJSCE" />
+          <EntitySet Name="OBSLUGA" EntityType="HeliosModel.OBSLUGA" />
+          <EntitySet Name="PRACOWNIK" EntityType="HeliosModel.PRACOWNIK" />
+          <EntitySet Name="SALA" EntityType="HeliosModel.SALA" />
+          <EntitySet Name="SEANS" EntityType="HeliosModel.SEANS" />
+          <EntitySet Name="WYKUP_BILET" EntityType="HeliosModel.WYKUP_BILET" />
+          <AssociationSet Name="FK_IdBiletu" Association="HeliosModel.FK_IdBiletu">
+            <End Role="BILET" EntitySet="BILET" />
+            <End Role="WYKUP_BILET" EntitySet="WYKUP_BILET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdEtatu" Association="HeliosModel.FK_IdEtatu">
+            <End Role="ETAT" EntitySet="ETAT" />
+            <End Role="PRACOWNIK" EntitySet="PRACOWNIK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdFilmu" Association="HeliosModel.FK_IdFilmu">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="SEANS" EntitySet="SEANS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdFilmu_O" Association="HeliosModel.FK_IdFilmu_O">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="OBSLUGA" EntitySet="OBSLUGA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdKina" Association="HeliosModel.FK_IdKina">
+            <End Role="KINO" EntitySet="KINO" />
+            <End Role="SALA" EntitySet="SALA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdKina_P" Association="HeliosModel.FK_IdKina_P">
+            <End Role="KINO" EntitySet="KINO" />
+            <End Role="PRACOWNIK" EntitySet="PRACOWNIK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdMiejsca" Association="HeliosModel.FK_IdMiejsca">
+            <End Role="MIEJSCE" EntitySet="MIEJSCE" />
+            <End Role="WYKUP_BILET" EntitySet="WYKUP_BILET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdSali" Association="HeliosModel.FK_IdSali">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="MIEJSCE" EntitySet="MIEJSCE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdPracownika" Association="HeliosModel.FK_IdPracownika">
+            <End Role="PRACOWNIK" EntitySet="PRACOWNIK" />
+            <End Role="OBSLUGA" EntitySet="OBSLUGA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdSali_S" Association="HeliosModel.FK_IdSali_S">
+            <End Role="SALA" EntitySet="SALA" />
+            <End Role="SEANS" EntitySet="SEANS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdSeansu" Association="HeliosModel.FK_IdSeansu">
+            <End Role="SEANS" EntitySet="SEANS" />
+            <End Role="WYKUP_BILET" EntitySet="WYKUP_BILET" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BILET">
+          <Key>
+            <PropertyRef Name="IdBiletu" />
+          </Key>
+          <Property Name="IdBiletu" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaBiletu" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Cena" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="WYKUP_BILET" Relationship="HeliosModel.FK_IdBiletu" FromRole="BILET" ToRole="WYKUP_BILET" />
+        </EntityType>
+        <EntityType Name="ETAT">
+          <Key>
+            <PropertyRef Name="IdEtatu" />
+          </Key>
+          <Property Name="IdEtatu" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaEtatu" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="PlacaMin" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PlacaMax" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="PRACOWNIK" Relationship="HeliosModel.FK_IdEtatu" FromRole="ETAT" ToRole="PRACOWNIK" />
+        </EntityType>
+        <EntityType Name="FILM">
+          <Key>
+            <PropertyRef Name="IdFilmu" />
+          </Key>
+          <Property Name="IdFilmu" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaFilmuPL" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NazwaFilmuORG" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="RodzajFilmu" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="CzasTrwania" Type="Time" Precision="0" />
+          <NavigationProperty Name="SEANS" Relationship="HeliosModel.FK_IdFilmu" FromRole="FILM" ToRole="SEANS" />
+          <NavigationProperty Name="OBSLUGA" Relationship="HeliosModel.FK_IdFilmu_O" FromRole="FILM" ToRole="OBSLUGA" />
+        </EntityType>
+        <EntityType Name="KINO">
+          <Key>
+            <PropertyRef Name="IdKina" />
+          </Key>
+          <Property Name="IdKina" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaKina" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="KodPocztowy" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Miejscowosc" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Ulica" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Nr" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SALA" Relationship="HeliosModel.FK_IdKina" FromRole="KINO" ToRole="SALA" />
+          <NavigationProperty Name="PRACOWNIK" Relationship="HeliosModel.FK_IdKina_P" FromRole="KINO" ToRole="PRACOWNIK" />
+        </EntityType>
+        <EntityType Name="MIEJSCE">
+          <Key>
+            <PropertyRef Name="IdMiejsca" />
+          </Key>
+          <Property Name="IdMiejsca" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Rzad" Type="Int32" Nullable="false" />
+          <Property Name="Miejsce1" Type="Int32" Nullable="false" />
+          <Property Name="Status_M" Type="Boolean" />
+          <Property Name="FK_IdSali" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="WYKUP_BILET" Relationship="HeliosModel.FK_IdMiejsca" FromRole="MIEJSCE" ToRole="WYKUP_BILET" />
+          <NavigationProperty Name="SALA" Relationship="HeliosModel.FK_IdSali" FromRole="MIEJSCE" ToRole="SALA" />
+        </EntityType>
+        <EntityType Name="OBSLUGA">
+          <Key>
+            <PropertyRef Name="IdObslugi" />
+          </Key>
+          <Property Name="IdObslugi" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_IdFilmu" Type="Int32" Nullable="false" />
+          <Property Name="FK_IdPracownika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FILM" Relationship="HeliosModel.FK_IdFilmu_O" FromRole="OBSLUGA" ToRole="FILM" />
+          <NavigationProperty Name="PRACOWNIK" Relationship="HeliosModel.FK_IdPracownika" FromRole="OBSLUGA" ToRole="PRACOWNIK" />
+        </EntityType>
+        <EntityType Name="PRACOWNIK">
+          <Key>
+            <PropertyRef Name="IdPracownika" />
+          </Key>
+          <Property Name="IdPracownika" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Imie" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="KodPocztowy" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="Miejscowosc" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Ulica" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Nr" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Telefon" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PlacaPod" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PlacaDod" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DataUr" Type="DateTime" Precision="0" />
+          <Property Name="DataZat" Type="DateTime" Precision="0" />
+          <Property Name="FK_IdEtatu" Type="Int32" Nullable="false" />
+          <Property Name="FK_IdKina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ETAT" Relationship="HeliosModel.FK_IdEtatu" FromRole="PRACOWNIK" ToRole="ETAT" />
+          <NavigationProperty Name="KINO" Relationship="HeliosModel.FK_IdKina_P" FromRole="PRACOWNIK" ToRole="KINO" />
+          <NavigationProperty Name="OBSLUGA" Relationship="HeliosModel.FK_IdPracownika" FromRole="PRACOWNIK" ToRole="OBSLUGA" />
+        </EntityType>
+        <EntityType Name="SALA">
+          <Key>
+            <PropertyRef Name="IdSali" />
+          </Key>
+          <Property Name="IdSali" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaSali" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Klimatyzacja" Type="Boolean" />
+          <Property Name="FK_IdKina" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KINO" Relationship="HeliosModel.FK_IdKina" FromRole="SALA" ToRole="KINO" />
+          <NavigationProperty Name="MIEJSCE" Relationship="HeliosModel.FK_IdSali" FromRole="SALA" ToRole="MIEJSCE" />
+          <NavigationProperty Name="SEANS" Relationship="HeliosModel.FK_IdSali_S" FromRole="SALA" ToRole="SEANS" />
+        </EntityType>
+        <EntityType Name="SEANS">
+          <Key>
+            <PropertyRef Name="IdSeansu" />
+          </Key>
+          <Property Name="IdSeansu" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SeansData" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SeansGodzina" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="Status_S" Type="Boolean" />
+          <Property Name="FK_IdSali" Type="Int32" Nullable="false" />
+          <Property Name="FK_IdFilmu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FILM" Relationship="HeliosModel.FK_IdFilmu" FromRole="SEANS" ToRole="FILM" />
+          <NavigationProperty Name="SALA" Relationship="HeliosModel.FK_IdSali_S" FromRole="SEANS" ToRole="SALA" />
+          <NavigationProperty Name="WYKUP_BILET" Relationship="HeliosModel.FK_IdSeansu" FromRole="SEANS" ToRole="WYKUP_BILET" />
+        </EntityType>
+        <EntityType Name="WYKUP_BILET">
+          <Key>
+            <PropertyRef Name="IdRezerwacji" />
+          </Key>
+          <Property Name="IdRezerwacji" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_IdSeansu" Type="Int32" Nullable="false" />
+          <Property Name="FK_IdMiejsca" Type="Int32" Nullable="false" />
+          <Property Name="FK_IdBiletu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BILET" Relationship="HeliosModel.FK_IdBiletu" FromRole="WYKUP_BILET" ToRole="BILET" />
+          <NavigationProperty Name="MIEJSCE" Relationship="HeliosModel.FK_IdMiejsca" FromRole="WYKUP_BILET" ToRole="MIEJSCE" />
+          <NavigationProperty Name="SEANS" Relationship="HeliosModel.FK_IdSeansu" FromRole="WYKUP_BILET" ToRole="SEANS" />
+        </EntityType>
+        <Association Name="FK_IdBiletu">
+          <End Role="BILET" Type="HeliosModel.BILET" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WYKUP_BILET" Type="HeliosModel.WYKUP_BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BILET">
+              <PropertyRef Name="IdBiletu" />
+            </Principal>
+            <Dependent Role="WYKUP_BILET">
+              <PropertyRef Name="FK_IdBiletu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdEtatu">
+          <End Role="ETAT" Type="HeliosModel.ETAT" Multiplicity="1" />
+          <End Role="PRACOWNIK" Type="HeliosModel.PRACOWNIK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETAT">
+              <PropertyRef Name="IdEtatu" />
+            </Principal>
+            <Dependent Role="PRACOWNIK">
+              <PropertyRef Name="FK_IdEtatu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdFilmu">
+          <End Role="FILM" Type="HeliosModel.FILM" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SEANS" Type="HeliosModel.SEANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="IdFilmu" />
+            </Principal>
+            <Dependent Role="SEANS">
+              <PropertyRef Name="FK_IdFilmu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdFilmu_O">
+          <End Role="FILM" Type="HeliosModel.FILM" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OBSLUGA" Type="HeliosModel.OBSLUGA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="IdFilmu" />
+            </Principal>
+            <Dependent Role="OBSLUGA">
+              <PropertyRef Name="FK_IdFilmu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdKina">
+          <End Role="KINO" Type="HeliosModel.KINO" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SALA" Type="HeliosModel.SALA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KINO">
+              <PropertyRef Name="IdKina" />
+            </Principal>
+            <Dependent Role="SALA">
+              <PropertyRef Name="FK_IdKina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdKina_P">
+          <End Role="KINO" Type="HeliosModel.KINO" Multiplicity="1" />
+          <End Role="PRACOWNIK" Type="HeliosModel.PRACOWNIK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KINO">
+              <PropertyRef Name="IdKina" />
+            </Principal>
+            <Dependent Role="PRACOWNIK">
+              <PropertyRef Name="FK_IdKina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdMiejsca">
+          <End Role="MIEJSCE" Type="HeliosModel.MIEJSCE" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WYKUP_BILET" Type="HeliosModel.WYKUP_BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MIEJSCE">
+              <PropertyRef Name="IdMiejsca" />
+            </Principal>
+            <Dependent Role="WYKUP_BILET">
+              <PropertyRef Name="FK_IdMiejsca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdSali">
+          <End Role="SALA" Type="HeliosModel.SALA" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MIEJSCE" Type="HeliosModel.MIEJSCE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="IdSali" />
+            </Principal>
+            <Dependent Role="MIEJSCE">
+              <PropertyRef Name="FK_IdSali" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdPracownika">
+          <End Role="PRACOWNIK" Type="HeliosModel.PRACOWNIK" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OBSLUGA" Type="HeliosModel.OBSLUGA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRACOWNIK">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="OBSLUGA">
+              <PropertyRef Name="FK_IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdSali_S">
+          <End Role="SALA" Type="HeliosModel.SALA" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SEANS" Type="HeliosModel.SEANS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALA">
+              <PropertyRef Name="IdSali" />
+            </Principal>
+            <Dependent Role="SEANS">
+              <PropertyRef Name="FK_IdSali" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdSeansu">
+          <End Role="SEANS" Type="HeliosModel.SEANS" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WYKUP_BILET" Type="HeliosModel.WYKUP_BILET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEANS">
+              <PropertyRef Name="IdSeansu" />
+            </Principal>
+            <Dependent Role="WYKUP_BILET">
+              <PropertyRef Name="FK_IdSeansu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HeliosModelStoreContainer" CdmEntityContainer="HeliosEntities">
+          <EntitySetMapping Name="BILET">
+            <EntityTypeMapping TypeName="HeliosModel.BILET">
+              <MappingFragment StoreEntitySet="BILET">
+                <ScalarProperty Name="IdBiletu" ColumnName="IdBiletu" />
+                <ScalarProperty Name="NazwaBiletu" ColumnName="NazwaBiletu" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ETAT">
+            <EntityTypeMapping TypeName="HeliosModel.ETAT">
+              <MappingFragment StoreEntitySet="ETAT">
+                <ScalarProperty Name="IdEtatu" ColumnName="IdEtatu" />
+                <ScalarProperty Name="NazwaEtatu" ColumnName="NazwaEtatu" />
+                <ScalarProperty Name="PlacaMin" ColumnName="PlacaMin" />
+                <ScalarProperty Name="PlacaMax" ColumnName="PlacaMax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILM">
+            <EntityTypeMapping TypeName="HeliosModel.FILM">
+              <MappingFragment StoreEntitySet="FILM">
+                <ScalarProperty Name="IdFilmu" ColumnName="IdFilmu" />
+                <ScalarProperty Name="NazwaFilmuPL" ColumnName="NazwaFilmuPL" />
+                <ScalarProperty Name="NazwaFilmuORG" ColumnName="NazwaFilmuORG" />
+                <ScalarProperty Name="RodzajFilmu" ColumnName="RodzajFilmu" />
+                <ScalarProperty Name="CzasTrwania" ColumnName="CzasTrwania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KINO">
+            <EntityTypeMapping TypeName="HeliosModel.KINO">
+              <MappingFragment StoreEntitySet="KINO">
+                <ScalarProperty Name="IdKina" ColumnName="IdKina" />
+                <ScalarProperty Name="NazwaKina" ColumnName="NazwaKina" />
+                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+                <ScalarProperty Name="Miejscowosc" ColumnName="Miejscowosc" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="Nr" ColumnName="Nr" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MIEJSCE">
+            <EntityTypeMapping TypeName="HeliosModel.MIEJSCE">
+              <MappingFragment StoreEntitySet="MIEJSCE">
+                <ScalarProperty Name="IdMiejsca" ColumnName="IdMiejsca" />
+                <ScalarProperty Name="Rzad" ColumnName="Rzad" />
+                <ScalarProperty Name="Miejsce1" ColumnName="Miejsce" />
+                <ScalarProperty Name="Status_M" ColumnName="Status_M" />
+                <ScalarProperty Name="FK_IdSali" ColumnName="FK_IdSali" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OBSLUGA">
+            <EntityTypeMapping TypeName="HeliosModel.OBSLUGA">
+              <MappingFragment StoreEntitySet="OBSLUGA">
+                <ScalarProperty Name="IdObslugi" ColumnName="IdObslugi" />
+                <ScalarProperty Name="FK_IdFilmu" ColumnName="FK_IdFilmu" />
+                <ScalarProperty Name="FK_IdPracownika" ColumnName="FK_IdPracownika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRACOWNIK">
+            <EntityTypeMapping TypeName="HeliosModel.PRACOWNIK">
+              <MappingFragment StoreEntitySet="PRACOWNIK">
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+                <ScalarProperty Name="Miejscowosc" ColumnName="Miejscowosc" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="Nr" ColumnName="Nr" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="PlacaPod" ColumnName="PlacaPod" />
+                <ScalarProperty Name="PlacaDod" ColumnName="PlacaDod" />
+                <ScalarProperty Name="DataUr" ColumnName="DataUr" />
+                <ScalarProperty Name="DataZat" ColumnName="DataZat" />
+                <ScalarProperty Name="FK_IdEtatu" ColumnName="FK_IdEtatu" />
+                <ScalarProperty Name="FK_IdKina" ColumnName="FK_IdKina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALA">
+            <EntityTypeMapping TypeName="HeliosModel.SALA">
+              <MappingFragment StoreEntitySet="SALA">
+                <ScalarProperty Name="IdSali" ColumnName="IdSali" />
+                <ScalarProperty Name="NazwaSali" ColumnName="NazwaSali" />
+                <ScalarProperty Name="Klimatyzacja" ColumnName="Klimatyzacja" />
+                <ScalarProperty Name="FK_IdKina" ColumnName="FK_IdKina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEANS">
+            <EntityTypeMapping TypeName="HeliosModel.SEANS">
+              <MappingFragment StoreEntitySet="SEANS">
+                <ScalarProperty Name="IdSeansu" ColumnName="IdSeansu" />
+                <ScalarProperty Name="SeansData" ColumnName="SeansData" />
+                <ScalarProperty Name="SeansGodzina" ColumnName="SeansGodzina" />
+                <ScalarProperty Name="Status_S" ColumnName="Status_S" />
+                <ScalarProperty Name="FK_IdSali" ColumnName="FK_IdSali" />
+                <ScalarProperty Name="FK_IdFilmu" ColumnName="FK_IdFilmu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WYKUP_BILET">
+            <EntityTypeMapping TypeName="HeliosModel.WYKUP_BILET">
+              <MappingFragment StoreEntitySet="WYKUP_BILET">
+                <ScalarProperty Name="IdRezerwacji" ColumnName="IdRezerwacji" />
+                <ScalarProperty Name="FK_IdSeansu" ColumnName="FK_IdSeansu" />
+                <ScalarProperty Name="FK_IdMiejsca" ColumnName="FK_IdMiejsca" />
+                <ScalarProperty Name="FK_IdBiletu" ColumnName="FK_IdBiletu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

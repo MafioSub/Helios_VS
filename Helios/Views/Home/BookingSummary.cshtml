@@ -1,0 +1,74 @@
+﻿@model Helios.Models.WYKUP_BILET
+@{
+    ViewBag.Title = "Podsumowanie rezerwacji";
+}
+
+<h2>Podsumowanie rezerwacji</h2>
+
+<p>
+    Proces rezerwacji zakończył się pomyślnie. Zapisz numer rezerwacji, przyda on Ci się podczas zakupu biletu w kasie.
+    <br />
+    Szczegóły rezerwacji zawarto poniżej:
+</p>
+
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.IdRezerwacji)
+</div>
+<div class="display-field" style="font-weight: bold; font-size: large">
+    @Html.DisplayFor(model => model.IdRezerwacji)
+</div>
+
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.BILET.Cena)
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.BILET.Cena)
+</div>
+
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.SEANS.FILM.NazwaFilmuPL)
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.SEANS.FILM.NazwaFilmuPL)
+</div>
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.SEANS.FILM.RodzajFilmu)
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.SEANS.FILM.RodzajFilmu)
+</div>
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.SEANS.SeansData)
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.SEANS.SeansData)
+</div>
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.SEANS.SeansGodzina)
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.SEANS.SeansGodzina)
+</div>
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.MIEJSCE.SALA.NazwaSali)
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.MIEJSCE.SALA.NazwaSali)
+</div>
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.MIEJSCE.Miejsce1)
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.MIEJSCE.Miejsce1)
+</div>
+
+<div class="display-label">
+    @Html.DisplayNameFor(model => model.MIEJSCE.Rzad)
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.MIEJSCE.Rzad)
+</div>
+
+<p>
+    @Html.ActionLink("Wróć do listy seansów", "Index")
+</p>

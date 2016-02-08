@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Helios.Models.SEANS>
+
+@{
+    ViewBag.Title = "Seanse";
+}
+
+<h2>Seanse.</h2>
+
+<p>
+    @Html.ActionLink("dodaj seans", "CreateSeance")
+</p>
+ @using (Html.BeginForm()){   
+         <p> rodzaj: @Html.DropDownList("movieGenre", "wszystkie")
+             sala: @Html.DropDownList("room","wszystkie")  
+             szukaj po tytule: @Html.TextBox("movie") 
+             od: @Html.TextBox("FromDate",null, new { @style= "width:70px" })
+             do: @Html.TextBox("ToDate", null, new { @style = "width:70px" }) <br />  
+         <input type="submit" value="filtruj" /></p>
+        }
+<table>
+    <tr>
+        <th style="width:20px">
+            @Html.DisplayNameFor(model => model.IdSeansu)
+        </th>
+        <th style="width:100px">
+            @Html.DisplayNameFor(model => model.SeansData)
+        </th>
+        <th style="width:100px">
+            @Html.DisplayNameFor(model => model.SeansGodzina)
+        </th>
+        <th style="width:60px">
+            @Html.DisplayNameFor(model => model.Status_S)
+        </th>
+        <th style="width:80px">
+            @Html.DisplayNameFor(model => model.SALA.NazwaSali)
+        </th>
+        <th style="width:200px">
+            tytuł filmu
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdSeansu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeansData)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeansGodzina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status_S)
+        </td>
+        <td>
+            @Html.ActionLink(item.SALA.NazwaSali, "RoomDetails", new { id = item.SALA.IdSali })
+        </td>
+        <td>
+            @Html.ActionLink(item.FILM.NazwaFilmuPL + " (" + item.FILM.RodzajFilmu+")", "MovieDetails", new { id = item.FILM.IdFilmu })
+        </td>
+        <td>
+            @Html.ActionLink("edycja", "EditSeance", new {  id=item.IdSeansu }) |
+            @Html.ActionLink("szczegóły", "SeanceDetails", new {  id=item.IdSeansu }) |
+            @Html.ActionLink("usuń", "DeleteSeance", new {  id=item.IdSeansu }) |
+            @Html.ActionLink("obciążenie sali","RoomLoad",new {id = item.IdSeansu } )
+        </td>
+    </tr>
+}
+
+</table>
+<script>
+     $(document).ready(function () {
+         $("#FromDate").datepicker();
+         $("#ToDate").datepicker();
+     });
+  </script>

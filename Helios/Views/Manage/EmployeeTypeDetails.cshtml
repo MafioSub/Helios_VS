@@ -1,0 +1,43 @@
+﻿@model Helios.Models.ETAT
+
+@{
+    ViewBag.Title = "Szczegóły etatu";
+}
+
+<h2>Szczegóły etatu</h2>
+
+<fieldset>
+    <legend>ETAT</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdEtatu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdEtatu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NazwaEtatu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NazwaEtatu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PlacaMin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PlacaMin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PlacaMax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PlacaMax)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("edycja", "EditEmployeeType", new {  id=Model.IdEtatu }) |
+    @Html.ActionLink("wróć do listy", "EmployeeTypes")
+</p>

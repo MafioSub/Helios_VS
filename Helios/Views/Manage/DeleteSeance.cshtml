@@ -1,0 +1,60 @@
+﻿@model Helios.Models.SEANS
+
+@{
+    ViewBag.Title = "Usuwanie seansu";
+}
+
+<h2>Usuń seans.</h2>
+
+<h3>Czy na pewno chcesz usunąć poniższy seans?</h3>
+<fieldset>
+    <legend>SEANS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdSeansu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdSeansu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SeansData)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeansData)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SeansGodzina)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeansGodzina)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status_S)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status_S)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FK_IdSali)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FK_IdSali)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FK_IdFilmu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FK_IdFilmu)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="usuń" /> |
+        @Html.ActionLink("wróć do listy", "Seances")
+    </p>
+}

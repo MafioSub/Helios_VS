@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("KINO HELIOS", "Index", "Home")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        @if (HttpContext.Current.User.IsInRole("Admin"))
+                        {
+                            <ul id="menu2">
+                                <li>@Html.ActionLink("filmy", "Movies", "Manage")</li>
+                                <li>@Html.ActionLink("sale kinowe", "Rooms", "Manage")</li>
+                                <li>@Html.ActionLink("bilety","Tickets","Manage")</li>
+                                <li>@Html.ActionLink("seanse","Seances","Manage")</li>
+                                <li>@Html.ActionLink("rezerwacje","Bookings","Manage")</li>
+                                <li>@Html.ActionLink("etaty","EmployeeTypes","Manage")</li>
+                                <li>@Html.ActionLink("pracownicy","Employees","Manage")</li>
+                            </ul>
+                        }
+                        <ul id="menu">
+                            @if(HttpContext.Current.User.IsInRole("Admin"))
+                            {
+                                <li>@Html.ActionLink("strona główna", "Index", "Home")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("seanse", "Index", "Home")</li>       
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - System rezerwacji biletów, kino Helios</p>
+                </div>
+            </div>
+        </footer>
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

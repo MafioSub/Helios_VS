@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Helios.Models.SEANS>
+@{
+    ViewBag.Title = "KINO HELIOS - Rezerwacja biletów ";
+}
+@using (Html.BeginForm())
+{
+    <p>
+        rodzaj: @Html.DropDownList("movieGenre", "wszystkie")
+        szukaj po tytule: @Html.TextBox("movie")
+        od: @Html.TextBox("FromDate", null, new { @style = "width:70px" })
+        do: @Html.TextBox("ToDate", null, new { @style = "width:70px" })
+        <br />
+        <input type="submit" value="filtruj" />
+    </p>
+
+}
+<h2>Lista dostępnych seansów.</h2>
+@foreach (var item in Model)
+{
+    <table class="seanceTable">
+        <tr>
+            <td style="background-color:#7ac0da;font-weight:bold;" colspan="2">
+                @item.FILM.NazwaFilmuPL
+                <br />
+                (@item.FILM.NazwaFilmuORG)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                data: @Html.DisplayFor(modelItem => item.SeansData)
+            </td>
+            <td>
+                godzina: @item.SeansGodzina
+            </td>
+        </tr>
+        <tr>
+            <td>
+                rodzaj: @item.FILM.RodzajFilmu
+            </td>
+            <td>
+                czas trwania: @item.FILM.CzasTrwania
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                sala: @item.SALA.NazwaSali
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @Html.ActionLink("Rezerwuj","Book",new {id = @item.IdSeansu })
+            </td>
+        </tr>
+    </table>
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#FromDate").datepicker();
+        $("#ToDate").datepicker();
+        $("#FromDate").datepicker("setDate", new Date());
+    });
+</script>
